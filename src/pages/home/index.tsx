@@ -335,31 +335,30 @@ export default function Home() {
 
 
     function submit() {
-        const all = [PolkWallet,EvmWallet,NearWallet]
-        console.log(all);
         let data = {
-            PolkWallet,
-            EvmWallet,
-            NearWallet
+            account:PolkWallet[0].value,
+            evmaddress:EvmWallet[0].value,
+            nearaddress:NearWallet[0].value,
         }
-        console.log(...all);
+        console.log(data);
         axios({
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'post',
-            url: '/registered',
+            url: 'http://101.32.184.176:9090/FISH/updateBindingAccount',
             data: JSON.stringify(data)
         }) .then(function (response) {
-            console.log(response);
+            console.log("success{}",response);
         })
           .catch(function (error) {
-              console.log(error);
+              console.log("error{}",error);
           });
-
-
     }
 
+    function approve(){
+        console.log("a");
+    }
     // @ts-ignore
     return (
 
@@ -589,6 +588,7 @@ export default function Home() {
                             <div className="flex justify-between text-sm mt-8">
                                 <div></div>
                                 <button
+                                    onClick={approve}
                                         className="text-lg p-1 rounded-lg bg-green-200 ring-2 ring-white ring-offset-0 cursor-pointer">
                                     transfer
                                 </button>
