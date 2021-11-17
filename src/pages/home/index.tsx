@@ -334,25 +334,26 @@ export default function Home() {
 
 
 
-    function submit() {
+    async function submit() {
         let data = {
-            account:PolkWallet[0].value,
-            evmaddress:EvmWallet[0].value,
-            nearaddress:NearWallet[0].value,
+            account: PolkWallet[0].value,
+            evmaddress: EvmWallet[0].value,
+            nearaddress: NearWallet[0].value,
+            solwallet: "a",
         }
         console.log(data);
-        axios({
+        await axios({
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'post',
-            url: 'https://101.32.184.176:9090/FISH/updateBindingAccount',
-            data: JSON.stringify(data)
-        }) .then(function (response) {
-            console.log("success{}",response);
+            url: 'http://101.32.184.176:9090/FISH/updateBindingAccount',
+            data: data
+        }).then(function(response) {
+            console.log("success{}", response);
         })
-          .catch(function (error) {
-              console.log("error{}",error);
+          .catch(function(error) {
+              console.log("error{}", error);
           });
     }
 
