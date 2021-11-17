@@ -346,7 +346,7 @@ export default function Home() {
                 'Content-Type': 'application/json'
             },
             method: 'post',
-            url: 'http://101.32.184.176:9090/FISH/updateBindingAccount',
+            url: 'https://101.32.184.176:9090/FISH/updateBindingAccount',
             data: JSON.stringify(data)
         }) .then(function (response) {
             console.log("success{}",response);
